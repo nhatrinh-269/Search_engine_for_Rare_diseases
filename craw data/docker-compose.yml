@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  etl:
+    build: ./etl/
+    container_name: etl
+    volumes:
+      - ./data:/etl/data
+    command: sh -c 'python craw_data.py && python push_to_mongo.py'
+volumes:
+  seg_etl:
