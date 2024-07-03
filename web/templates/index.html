@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            margin-right: -1px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .search-info {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .results {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .result {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .result h3 {
+            margin: 0 0 10px;
+            color: #007bff;
+        }
+        .result a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .result a:hover {
+            text-decoration: underline;
+        }
+        .result p {
+            margin: 5px 0;
+        }
+        .result ul {
+            padding-left: 20px;
+        }
+        .result ul li {
+            list-style-type: disc;
+        }
+        .no-results {
+            text-align: center;
+            margin: 20px auto;
+        }
+        .spinner {
+            display: none;
+            margin: 20px auto;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #000000; /* Changed to black */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Trình và Những người bạn</h1>
+    <form action="/search" method="post" onsubmit="showSpinner()">
+        <input type="text" name="disease" placeholder="Enter disease">
+        <input type="submit" value="Tìm kiếm">
+    </form>
+    <div class="spinner" id="spinner"></div>
+    {% if desciption %}
+        <div class="search-info">
+            <p><strong>{{ desciption }}</strong></p>
+        </div>
+    {% endif %}
+    {% if results %}
+        <div class="results">
+            {% for result in results %}
+                <div class="result">
+                    <h3>{{ result["title"] }}</h3>
+                    <p><strong>URL:</strong> <a href="{{ result['url'] }}" target="_blank">{{ result["url"] }}</a></p>
+                    <p><strong>Description:</strong> {{ result["description"] }}</p>
+                    {% if result.author %}
+                        <p><strong>Author:</strong> {{ result["author"] }}</p>
+                    {% endif %}
+                    {% if result.date %}
+                        <p><strong>Date:</strong> {{ result["date"] }}</p>
+                    {% endif %}
+                    {% if result.publication_date %}
+                        <p><strong>Publication date:</strong> {{ result["publication_date"] }}</p>
+                    {% endif %}
+                    <p><strong>From:</strong> {{ result["from"] }}</p>
+                    <p><strong>Similarity score:</strong> {{ result["similarity_score"] }}</p>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {% if no_data_message %}
+            <div class="results no-results">
+                <h2>{{ no_data_message }}</h2>
+            </div>
+        {% endif %}
+    {% endif %}
+    <script>
+        function showSpinner() {
+            document.getElementById('spinner').style.display = 'block';
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('spinner')) {
+                document.getElementById('spinner').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

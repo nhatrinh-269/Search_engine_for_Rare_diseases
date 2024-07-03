@@ -1,0 +1,7 @@
+numpy==1.26.4
+beautifulsoup4==4.12.3
+selenium==4.3.0
+requests==2.32.2
+pandas==2.2.2
+pymongo==4.7.3
+pyspark==3.5.1

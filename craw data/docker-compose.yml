@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  etl:
+    build: ./collect_data/
+    container_name: collect_data
+    volumes:
+      - ./collected_data:/craw_data/collected_data
+    command: sh -c 'python craw_data.py && python push_to_mongo.py'
+volumes:
+  collected_data:
