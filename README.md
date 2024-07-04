@@ -34,10 +34,10 @@ Overall, this innovative approach will significantly **improve the accessibility
 - **Enhanced Accessibility**: Facilitates **improved access to information** for both **patients** and **researchers**.
 
 ## System Requirements
-- **Docker 25.0.5** [here](https://docs.docker.com/get-docker/).
-- **Docker-compose 2.27.0** [here]( https://docs.docker.com/compose/).
-- **Python 3.9 or higher** [here](https://www.python.org/downloads/).
-- **MongoDB 4.4 or higher** [here](https://www.mongodb.com/).
+- **Docker** [here](https://docs.docker.com/get-docker/).
+- **Docker-compose** [here]( https://docs.docker.com/compose/).
+- **Python** [here](https://www.python.org/downloads/).
+- **MongoDB** [here](https://www.mongodb.com/).
   
 ## Required Skills
 - **Python**
@@ -47,6 +47,36 @@ Overall, this innovative approach will significantly **improve the accessibility
 - **NPL**
 - **HTML**
 
+## Installation Instructions
+1. **Install Docker and Docker Compose:**
+   - Download and install Docker from [here]( https://docs.docker.com/compose/install/).
+   - Download and install Docker Compose from [here](https://docs.docker.com/compose/install/).
+   - Download and install MongoDB from [here](https://www.python.org/downloads/).
+   - Download and install python from [here](https://www.mongodb.com/).
+2. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/nhatrinh-269/Search_engine_for_Rare_diseases
+   cd Search_engine_for_Rare_diseases
+   ```
+
+### Usage Instructions
+- **Build and Run Docker Compose for crawl data:**
+   ```bash
+   cd craw_data
+   docker-compose up --build
+   ```
+- **Training model:**
+  ```bash
+  python training_model.py
+  ```
+- **Run search engine:**
+  ```bash
+  cd web
+  python app.py
+  ```
+- **Accessing Search Engine:**
+   - Visiting `http://127.0.0.1:5000` in a browser loads Search Engine.
+     
 ## Project Structure
 ```
 .
