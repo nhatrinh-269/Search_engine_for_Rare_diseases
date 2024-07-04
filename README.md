@@ -1,12 +1,52 @@
 # Search Engine for Rare Diseases
 ## Overview
-Building a rare disease search engine to improve access for patients and researchers. This project aims to provide a centralized platform to search and retrieve relevant information about various rare diseases, thereby facilitating better understanding, research and treatment. In this project, the raw data could be up to 34gb but due to hardware limitations we were only able to collect about 10gb of raw data.
+
+This project aims to provide a **centralized platform** that allows **patients** and **researchers** to easily search for and retrieve **information related to rare diseases**. The **search engine** will facilitate **better understanding**, **research**, and **treatment** of rare diseases. 
+
+### Data Collection
+
+We collect data from various sources via **Google**, including **research papers**, **specialized medical websites**, and other **reputable sources**. The total amount of **raw data** can reach up to **34GB** or more, depending on the number of **keywords** selected. Due to hardware limitations, we will collect approximately **10GB** of raw data.
+
+### Database Choice
+
+We have chosen **MongoDB** as our primary **database** due to its **flexibility** in handling **non-linear data** and its ease of **scalability**. MongoDB allows us to store and manage a large volume of **unstructured data** efficiently.
+
+### Search Optimization
+
+With **traditional methods**, user input data is **vectorized** and then matched with each **vectorized data field** in the database, resulting in a **search algorithm complexity of O(n)**. We propose using **machine learning** to reduce the algorithm's complexity to **O(1)**. Each data field in the database is **labeled** and **indexed** using **Index1D** in MongoDB. A model is trained to predict which label the user input belongs to, significantly reducing the search algorithm's complexity.
+
+### High-Performance Search Engine
+
+With this approach, we aim to deliver a **high-performance search engine** that reduces **search complexity**, enabling **faster retrieval times** and quick access to **relevant information**. The model's **accurate label predictions** will ensure the retrieval of the most relevant data, enhancing the **quality** and **reliability** of the information. MongoDB's **flexible schema** and **scalability** will handle increasing data as more rare diseases are added. The seamless and intuitive **search experience** will be accessible to a wide range of users, from **medical professionals** to **patients**. Researchers will benefit from the **comprehensive** and **accessible database**, facilitating deeper insights and advancements in the study and treatment of rare diseases.
+
+Overall, this innovative approach will significantly **improve the accessibility** and **usability** of information on rare diseases, contributing to **better patient outcomes** and advancing **medical research**.
 
 ### **Key Features:**
-- **Comprehensive data collection**: Synthesize data from multiple sources to ensure comprehensive coverage of rare diseases.
 
-- **User-friendly interface**: Intuitive web interface makes navigation and use easy.
-- **Machine learning integration**: Uses machine learning models to improve search accuracy and relevance.
+- **Data Collection**: Collects data from **diverse sources** including **articles**, **research papers**, and **websites**.
+
+- **MongoDB**: Utilizes MongoDB for its **ease of storage** and **scalability capabilities**.
+
+- **Optimized Search**: Implements **Machine Learning** to achieve **O(1) complexity** for **efficient data retrieval**.
+
+- **User-Friendly Interface**: Provides a **seamless** and **intuitive interface** for enhanced **user interaction**.
+
+- **Enhanced Accessibility**: Facilitates **improved access to information** for both **patients** and **researchers**.
+
+## System Requirements
+- **Docker 25.0.5** [here](https://docs.docker.com/get-docker/).
+- **Docker-compose 2.27.0** [here]( https://docs.docker.com/compose/).
+- **Python 3.9 or higher** [here](https://www.python.org/downloads/).
+- **MongoDB 4.4 or higher** [here](https://www.mongodb.com/).
+  
+## Required Skills
+- **Python**
+- **Docker**
+- **MongoDB**
+- **ETL**
+- **NPL**
+- **HTML**
+
 ## Project Structure
 ```
 .
@@ -33,7 +73,6 @@ Building a rare disease search engine to improve access for patients and researc
 │   │   └── app.py
 │   └── training_model.py
 ```
-
 
 ### Explanation
 
