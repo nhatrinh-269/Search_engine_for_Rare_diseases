@@ -44,7 +44,7 @@ Overall, this innovative approach will significantly **improve the accessibility
 - **Docker**
 - **MongoDB**
 - **ETL**
-- **NPL**
+- **NLP**
 - **HTML**
 
 ## Installation Instructions
